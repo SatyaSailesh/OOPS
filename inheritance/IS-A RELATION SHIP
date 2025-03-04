@@ -1,0 +1,86 @@
+import java .util.*;
+class Vehicle
+{
+    private String brand;
+    private String model;
+
+    public Vehicle(String brand, String model) 
+    {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    public void displayDetails()
+    {
+        System.out.println("Brand: " + brand + ", Model: " + model);
+    }
+
+    public void move() {
+        System.out.println("The vehicle is moving.");
+    }
+}
+
+
+class Car extends Vehicle
+{
+    private int numberOfDoors;
+
+    public Car(String brand, String model, int numberOfDoors)
+    {
+        super(brand, model); 
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public void displayCarDetails()
+    {
+        displayDetails();
+        System.out.println("Number of Doors: " + numberOfDoors);
+    }
+
+    public void Horn() {
+        System.out.println("The car honks its horn.");
+    }
+}
+
+
+class Motorcycle extends Vehicle 
+{
+    private int engineCapacity;
+
+    public Motorcycle(String brand, String model, int engineCapacity)
+    {
+        super(brand, model); 
+        this.engineCapacity = engineCapacity;
+    }
+
+    public void displayMotorcycleDetails() 
+    {
+        displayDetails(); 
+        System.out.println("Engine Capacity: " + engineCapacity + "cc");
+    }
+
+    public void revEngine() 
+    {
+        System.out.println("The motorcycle revs its engine.");
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+      
+        Car myCar = new Car("Toyota", "Corolla", 4);
+        Motorcycle myMotorcycle = new Motorcycle("Honda", "CBR500R", 500);
+
+       
+        System.out.println("Car Details:");
+        myCar.displayCarDetails();
+        myCar.move();
+        myCar.Horn(); 
+
+        System.out.println("\nMotorcycle Details:");
+        myMotorcycle.displayMotorcycleDetails();
+        myMotorcycle.move(); 
+        myMotorcycle.revEngine(); 
+    }
+}
