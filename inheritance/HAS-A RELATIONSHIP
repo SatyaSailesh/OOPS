@@ -1,0 +1,36 @@
+import java.util.*;
+class Engine {
+    private String type;
+
+    public Engine(String type) {
+        this.type = type;
+    }
+
+    public void start() {
+        System.out.println("The " + type + " engine is starting...");
+    }
+}
+
+
+class Car {
+    private String brand;
+    private Engine engine; 
+    public Car(String brand, Engine engine) {
+        this.brand = brand;
+        this.engine = engine;
+    }
+
+    public void displayDetails() {
+        System.out.println("Car Brand: " + brand);
+        engine.start();
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Engine carEngine = new Engine("V8");
+        Car myCar = new Car("Ford", carEngine);
+        myCar.displayDetails();
+    }
+}
