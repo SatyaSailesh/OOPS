@@ -1,0 +1,46 @@
+class Shape
+{
+    public void displayInfo() 
+{
+        System.out.println("This is a shape.");
+    }
+
+    public double calculateArea(double length, double width)
+{
+        return length * width;
+    }
+}
+
+class Rectangle extends Shape
+  {
+    public void calculateRectangleArea(double length, double width)
+  {
+        System.out.println("Rectangle Area: " + calculateArea(length, width));
+    }
+}
+
+class Circle extends Shape 
+{
+    public void calculateCircleArea(double radius) 
+{
+        double area = Math.PI * radius * radius;
+        System.out.println("Circle Area: " + area);
+    }
+}
+
+public class Main 
+{
+    public static void main(String[] args) 
+{
+        Rectangle rectangle = new Rectangle();
+        Circle circle = new Circle();
+
+        rectangle.displayInfo();
+        rectangle.calculateRectangleArea(5.0, 4.0);
+
+        System.out.println();
+
+        circle.displayInfo();
+        circle.calculateCircleArea(3.0);
+    }
+}
