@@ -1,0 +1,49 @@
+
+class Dimensions 
+{
+     double length;
+     double width;
+     double height;
+
+    public Dimensions(double length, double width, double height)
+{
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+
+    public double calculateArea()
+{
+        return length * width;
+    }
+}
+
+class Room extends Dimensions 
+{
+    public Room(double length, double width, double height) 
+{
+        super(length, width, height);  
+    }
+
+    public double calculateVolume() 
+{
+        return length * width * height;
+    }
+
+    public void displayRoomDetails() 
+{
+        System.out.println("Room Dimensions: Length = " + length + "m, Width = " + width + "m, Height = " + height + "m");
+        System.out.println("Area: " + calculateArea() + " sq.m");
+        System.out.println("Volume: " + calculateVolume() + " cu.m");
+    }
+}
+
+
+public class Main
+{
+    public static void main(String[] args)
+{
+        Room myRoom = new Room(5.0, 4.0, 3.0);
+        myRoom.displayRoomDetails();
+    }
+}
