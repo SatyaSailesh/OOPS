@@ -1,0 +1,94 @@
+class FoodItem {
+    private String name;
+    private double price;
+
+    public FoodItem(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void displayDetails() {
+        System.out.println("Food Item: " + name + ", Price: $" + price);
+    }
+}
+
+class Pizza extends FoodItem {
+    private String size;
+    private String[] toppings;
+
+    public Pizza(String name, double price, String size, String[] toppings) {
+        super(name, price);
+        this.size = size;
+        this.toppings = toppings;
+    }
+
+
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.print("Size: " + size + ", Toppings: ");
+        for (String topping : toppings) {
+            System.out.print(topping + " ");
+        }
+        System.out.println();
+    }
+}
+
+class Burger extends FoodItem {
+    private String pattyType;
+
+    public Burger(String name, double price, String pattyType) {
+        super(name, price);
+        this.pattyType = pattyType;
+    }
+
+  
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Patty Type: " + pattyType);
+    }
+}
+
+class Beverage extends FoodItem {
+    private boolean isCold;
+
+    public Beverage(String name, double price, boolean isCold) {
+        super(name, price);
+        this.isCold = isCold;
+    }
+
+   
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Served Cold: " + (isCold ? "Yes" : "No"));
+    }
+}
+
+public class FoodOrderingSystem {
+
+    public static void main(String[] args) {
+
+        String[] pizzaToppings = {"Cheese", "Olives", "Peppers"};
+        Pizza pizza = new Pizza("Deluxe Pizza", 12.99, "Large", pizzaToppings);
+        
+        Burger burger = new Burger("Cheeseburger", 8.99, "Paneer");
+        
+        Beverage beverage = new Beverage("Lemonade", 2.99, true);
+
+        System.out.println("---- Food Menu ----");
+        
+        pizza.displayDetails();
+        burger.displayDetails();
+        beverage.displayDetails();
+        
+        System.out.println("\nFood ordering system demonstration complete!");
+    }
+}
+
