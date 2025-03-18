@@ -1,0 +1,88 @@
+class Train {
+    private String trainName;
+    private int trainNumber;
+
+    public Train(String trainName, int trainNumber) {
+        this.trainName = trainName;
+        this.trainNumber = trainNumber;
+    }
+
+    public String getTrainName() {
+        return trainName;
+    }
+
+    public int getTrainNumber() {
+        return trainNumber;
+    }
+
+    public void displayInfo() {
+        System.out.println("Train Name: " + trainName);
+        System.out.println("Train Number: " + trainNumber);
+    }
+}
+
+class PassengerTrain extends Train {
+    private int totalPassengers;
+
+    public PassengerTrain(String trainName, int trainNumber, int totalPassengers) {
+        super(trainName, trainNumber);
+        this.totalPassengers = totalPassengers;
+    }
+
+    public int getTotalPassengers() {
+        return totalPassengers;
+    }
+
+    public void boardPassengers(int passengers) {
+        totalPassengers += passengers;
+        System.out.println(passengers + " passengers boarded. Total passengers: " + totalPassengers);
+    }
+
+    public void deboardPassengers(int passengers) {
+        if (passengers <= totalPassengers) {
+            totalPassengers -= passengers;
+            System.out.println(passengers + " passengers deboarded. Total passengers: " + totalPassengers);
+        } else {
+            System.out.println("Not enough passengers to deboard.");
+        }
+    }
+}
+
+class ExpressTrain extends PassengerTrain {
+    private double averageSpeed;
+
+    public ExpressTrain(String trainName, int trainNumber, int totalPassengers, double averageSpeed) {
+        super(trainName, trainNumber, totalPassengers);
+        this.averageSpeed = averageSpeed;
+    }
+
+    public double getAverageSpeed() {
+        return averageSpeed;
+    }
+
+    public void updateSpeed(double speed) {
+        this.averageSpeed = speed;
+        System.out.println("Updated average speed: " + averageSpeed + " km/h");
+    }
+}
+
+public class RailwayStationSystem {
+
+    public static void main(String[] args) {
+
+        ExpressTrain express = new ExpressTrain("Shatabdi Express", 12001, 300, 80.5);
+
+        System.out.println("---- Train Information ----");
+        express.displayInfo();
+        
+        System.out.println("\n---- Passenger Operations ----");
+        express.boardPassengers(50);
+        express.deboardPassengers(100);
+
+        System.out.println("\n---- Speed Operations ----");
+        System.out.println("Current Speed: " + express.getAverageSpeed() + " km/h");
+        express.updateSpeed(90.0);
+        
+        System.out.println("\nRailway Station Management Demonstration Complete!");
+    }
+}
