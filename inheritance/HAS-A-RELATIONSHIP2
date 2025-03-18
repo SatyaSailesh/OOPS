@@ -1,2 +1,122 @@
+class Engine {
+    private int horsepower;
+    private String fuelType;
+
+    public Engine(int horsepower, String fuelType) {
+        this.horsepower = horsepower;
+        this.fuelType = fuelType;
+    }
+
+    public int getHorsepower() {
+        return horsepower;
+    }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    public void start() {
+        System.out.println(fuelType + " engine with " + horsepower + " HP is starting.");
+    }
+
+    public void stop() {
+        System.out.println(fuelType + " engine is stopping.");
+    }
+}
+
+class Wheels {
+    private int size;
+    private String type;
+
+    public Wheels(int size, String type) {
+        this.size = size;
+        this.type = type;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void rotate() {
+        System.out.println(type + " wheels of size " + size + " inches are rotating.");
+    }
+}
+
+class Vehicle {
+    private String brand;
+    private String model;
+    private Engine engine;
+    private Wheels wheels;
+
+    public Vehicle(String brand, String model, Engine engine, Wheels wheels) {
+        this.brand = brand;
+        this.model = model;
+        this.engine = engine;
+        this.wheels = wheels;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void drive() {
+        System.out.println("Driving the " + getBrand() + " " + getModel());
+        engine.start();
+        wheels.rotate();
+        System.out.println(getBrand() + " " + getModel() + " is now moving...");
+    }
+
+    public void stop() {
+        engine.stop();
+        System.out.println(getBrand() + " " + getModel() + " has stopped.");
+    }
+}
+
+class Car extends Vehicle {
+    public Car(String brand, String model, Engine engine, Wheels wheels) {
+        super(brand, model, engine, wheels);
+    }
+}
+
+class Truck extends Vehicle {
+    public Truck(String brand, String model, Engine engine, Wheels wheels) {
+        super(brand, model, engine, wheels);
+    }
+}
+
+public class VehicleSystemDemo {
+
+    public static void main(String[] args) {
+
+        Engine petrolEngine = new Engine(150, "Petrol");
+        Engine dieselEngine = new Engine(300, "Diesel");
+
+        Wheels carWheels = new Wheels(16, "Alloy");
+        Wheels truckWheels = new Wheels(22, "Steel");
+
+        Vehicle car = new Car("Honda", "Civic", petrolEngine, carWheels);
+        Vehicle truck = new Truck("Ford", "F-150", dieselEngine, truckWheels);
+
+        Vehicle[] vehicles = {car, truck};
+        
+       for (int i = 0; i < vehicles.length; i++) {
+        vehicles[i].drive();
+        System.out.println();
+        vehicles[i].stop();
+        System.out.println();
+     }
+
+        System.out.println("Simulation complete!");
+        
+    }
+}
 
 
