@@ -32,9 +32,9 @@ public class main {
             double amount = scanner.nextDouble();
             atm.withdraw(amount);
         } catch (InsufficientBalanceException e) {
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.err.println("Invalid input! Please enter a valid amount.");
+            System.out.println("Invalid input! Please enter a valid amount.");
         } finally {
             scanner.close();
             System.out.println("Transaction completed.");
